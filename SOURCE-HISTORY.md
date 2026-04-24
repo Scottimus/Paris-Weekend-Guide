@@ -9,3 +9,7 @@ The archived desktop and mobile HTML copies have a local modification date of Ap
 ## 2026-04-23
 
 The local inventory contains one April 23 creation timestamp. It does not establish a separate saved HTML revision.
+
+## 2026-04-24
+
+The April 24 desktop and mobile HTML differ from their April 21 counterparts. The public demo is an adaptation using fictional trip details.
