@@ -13,3 +13,7 @@ The local inventory contains one April 23 creation timestamp. It does not establ
 ## 2026-04-24
 
 The April 24 desktop and mobile HTML differ from their April 21 counterparts. The public demo is an adaptation using fictional trip details.
+
+## 2026-11-03
+
+The public portfolio copy was assembled on November 3. It uses a fictional schedule and links to public landmarks.
