@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paris Weekend Guide</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #f5efe6; color: #20202d; font: 1rem/1.6 system-ui,sans-serif; }
+body:not(.es) .lang-es, body.es .lang-en { display: none; }
+header { position: sticky; top: 0; background: #f5efe6; border-bottom: 1px solid #ddd0c0; }
+.bar, main { max-width: 46rem; margin: auto; padding: 1rem; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+main { padding-block: 2rem 4rem; }
+h1, h2 { font-family: Georgia,serif; line-height: 1.15; }
+h1 { font-size: clamp(2.4rem,8vw,4.5rem); margin: .35em 0; }
+h2 { margin: .25em 0; }
+a, small { color: #8e2f1f; }
+nav { display: flex; flex-wrap: wrap; gap: .7rem; }
+button, nav a { padding: .45rem .7rem; border: 1px solid #ddd0c0; border-radius: 1rem; background: white; color: #8e2f1f; font: inherit; }
+button { cursor: pointer; }
+button[aria-pressed=true] { background: #8e2f1f; color: white; }
+article { background: white; border: 1px solid #ddd0c0; border-radius: 1rem; padding: 1.25rem; margin-top: 1rem; scroll-margin-top: 6rem; }
+</style></head>
+<body><header><div class="bar"><strong><span class="lang-en">Paris field guide</span><span class="lang-es" lang="es">Guía de París</span></strong><div>
+<button class="lang-btn" data-lang="en" lang="en" aria-pressed="true">EN</button>
+<button class="lang-btn" data-lang="es" lang="es" aria-pressed="false">ES</button>
+</div></div></header>
+<main><small><span class="lang-en">Sample itinerary</span><span class="lang-es" lang="es">Itinerario de ejemplo</span></small>
+<h1><span class="lang-en">A weekend in Paris</span><span class="lang-es" lang="es">Un fin de semana en París</span></h1>
+<p><span class="lang-en">Three days of art, neighbourhood walks, and time by the river.</span><span class="lang-es" lang="es">Tres días de arte, paseos por los barrios y tiempo junto al río.</span></p>
+<nav><a href="#day-1"><span class="lang-en">Day 1</span><span class="lang-es" lang="es">Día 1</span></a>
+<a href="#day-2"><span class="lang-en">Day 2</span><span class="lang-es" lang="es">Día 2</span></a>
+<a href="#day-3"><span class="lang-en">Day 3</span><span class="lang-es" lang="es">Día 3</span></a></nav>
+<article id="day-1"><small><span class="lang-en">Day 1</span><span class="lang-es" lang="es">Día 1</span></small>
+<h2><span class="lang-en">Art and gardens</span><span class="lang-es" lang="es">Arte y jardines</span></h2><p>Musée d’Orsay</p>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Mus%C3%A9e%20d%E2%80%99Orsay%20Paris"><span class="lang-en">Open in Maps</span><span class="lang-es" lang="es">Abrir en Maps</span></a></article>
+<article id="day-2"><small><span class="lang-en">Day 2</span><span class="lang-es" lang="es">Día 2</span></small>
+<h2><span class="lang-en">Morning in Montmartre</span><span class="lang-es" lang="es">Una mañana en Montmartre</span></h2><p>Sacré-Cœur</p>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Sacr%C3%A9-C%C5%93ur%20Paris"><span class="lang-en">Open in Maps</span><span class="lang-es" lang="es">Abrir en Maps</span></a></article>
+<article id="day-3"><small><span class="lang-en">Day 3</span><span class="lang-es" lang="es">Día 3</span></small>
+<h2><span class="lang-en">Along the Seine</span><span class="lang-es" lang="es">A orillas del Sena</span></h2><p>Champ de Mars</p>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Champ%20de%20Mars%20Paris"><span class="lang-en">Open in Maps</span><span class="lang-es" lang="es">Abrir en Maps</span></a></article>
+</main><script>
+    const langButtons = document.querySelectorAll('.lang-btn');
+    function setLang(lang) {
+        document.body.classList.toggle('es', lang === 'es');
+        document.documentElement.lang = lang;
+        langButtons.forEach(b => {
+            const active = b.dataset.lang === lang;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        try { localStorage.setItem('paris-guide-language', lang); } catch(e) {}
+    }
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+    try {
+        const saved = localStorage.getItem('paris-guide-language');
+        if (saved === 'es') setLang('es');
+    } catch(e) {}
+</script></body></html>
